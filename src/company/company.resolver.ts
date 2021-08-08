@@ -9,7 +9,11 @@ import {
 import { CategoryService } from 'src/category/category.service';
 import { Category } from 'src/category/schema/category.schema';
 import { CompanyService } from './company.service';
-import { Company, CreateCompanyInput, FindCompany } from './schema/company.schema';
+import {
+  Company,
+  CreateCompanyInput,
+  FindCompany,
+} from './schema/company.schema';
 
 @Resolver(() => Company)
 export class CompanyResolver {
@@ -20,22 +24,27 @@ export class CompanyResolver {
 
   @Query(() => [Company])
   async companies() {
-    return this.companyService.getCompanies();
+    return this.companyService.findAll();
   }
 
   @Query(() => Company)
   async company(@Args('input') { _id }: FindCompany) {
-    return this.companyService.getCompany(_id);
+    return this.companyService.findById(_id);
+  }
+
+  @Query(() => [Company])
+  async byCategory(@Args('input') category: string) {
+    return this.companyService.findByCategory(category);
   }
 
   @Mutation(() => Company)
   async createCompany(@Args('input') company: CreateCompanyInput) {
-    return this.companyService.createCompany(company);
+    return this.companyService.create(<any>company);
   }
 
   @Mutation(() => Company)
   async deleteCompany(@Args('input') { _id }: FindCompany) {
-    return this.companyService.deleteCompany(_id);
+    return this.companyService.delete(_id);
   }
 
   @ResolveField(() => Category)

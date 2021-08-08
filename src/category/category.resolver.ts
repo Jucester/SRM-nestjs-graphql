@@ -19,11 +19,11 @@ export class CategoryResolver {
 
   @Query(() => [Category])
   async categories() {
-    return this.categoryService.findMany();
+    return this.categoryService.findAll();
   }
 
   @Mutation(() => Category)
   async createCategory(@Args('input') input: CreateCategoryInput) {
-    return this.categoryService.createCategory(input);
+    return this.categoryService.create(<any>input);
   }
 }

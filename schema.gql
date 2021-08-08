@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type Company {
-  _id: ID!
+  _id: String!
   name: String!
   description: String!
   email: String!
@@ -19,6 +19,7 @@ type Category {
 type Query {
   companies: [Company!]!
   company(input: FindCompany!): Company!
+  byCategory(input: String!): [Company!]!
   categories: [Category!]!
 }
 

@@ -10,7 +10,7 @@ export type CompanyDocument = Company & Document;
 @Schema()
 @ObjectType()
 export class Company {
-  @Field(() => ID)
+  @Field()
   _id: string;
 
   @Prop({ required: true })

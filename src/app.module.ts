@@ -9,6 +9,7 @@ import { CategoryService } from './category/category.service';
 import { CategoryModule } from './category/category.module';
 import { CompanySchema } from './company/schema/company.schema';
 import { CategorySchema } from './category/schema/category.schema';
+import { BaseService } from './base/base.service';
 
 @Module({
   imports: [

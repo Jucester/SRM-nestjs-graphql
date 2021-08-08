@@ -1,43 +1,24 @@
-import { Injectable } from '@nestjs/common';
-// import companies from '../data/Companies';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-
-import {
-  Company,
-  CreateCompanyInput,
-  CompanyDocument,
-} from './schema/company.schema';
+import { CompanyDocument } from './schema/company.schema';
+import { BaseService } from 'src/base/base.service';
 
 @Injectable()
-export class CompanyService {
+export class CompanyService extends BaseService<CompanyDocument> {
   constructor(
     @InjectModel('Company')
     private readonly companyModel: Model<CompanyDocument>,
-  ) {}
-
-  async getCompanies(): Promise<Company[]> {
-    return await this.companyModel.find();
+  ) {
+    super(companyModel);
   }
 
-  async getCompany(companyId: string): Promise<Company> {
-    return await this.companyModel.findById(companyId);
+  async findByCategory(categoryId: string) {
+    try {
+      return this.companyModel.find({ category: categoryId });
+    } catch (error) {
+      console.log(error);
+      throw new InternalServerErrorException(error);
+    }
   }
-
-  async createCompany(company: CreateCompanyInput): Promise<Company> {
-    return await this.companyModel.create(company);
-  }
-
-  async updateCompany(companyId: string, company: Company): Promise<Company> {
-    return await this.companyModel.findByIdAndUpdate(companyId, company, {
-      new: true,
-    });
-  }
-
-  async deleteCompany(companyId: string): Promise<Company> {
-    return await this.companyModel.findByIdAndRemove(companyId);
-  }
-
-  // async findByCategory(categoryId: string) {
-  // }
 }
