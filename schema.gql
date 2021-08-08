@@ -1,0 +1,45 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Company {
+  _id: ID!
+  name: String!
+  description: String!
+  email: String!
+  phone: String!
+  category: Category!
+}
+
+type Category {
+  _id: ID!
+  name: String!
+  companies: [Company!]!
+}
+
+type Query {
+  companies: [Company!]!
+  company(input: FindCompany!): Company!
+  categories: [Category!]!
+}
+
+input FindCompany {
+  _id: ID!
+}
+
+type Mutation {
+  createCompany(input: CreateCompanyInput!): Company!
+  createCategory(input: CreateCategoryInput!): Category!
+}
+
+input CreateCompanyInput {
+  name: String!
+  description: String!
+  email: String!
+  phone: String!
+  category: String!
+}
+
+input CreateCategoryInput {
+  name: String!
+}
