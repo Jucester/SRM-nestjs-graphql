@@ -1,6 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { Category, CategoryDocument, CreateCategoryInput } from './schema/category.schema';
-import categories from '../data/Categories';
+import {
+  Category,
+  CategoryDocument,
+  CreateCategoryInput,
+} from './schema/category.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 
@@ -11,15 +14,15 @@ export class CategoryService {
     private readonly categoryModel: Model<CategoryDocument>,
   ) {}
 
-  async findMany() {
+  async findMany(): Promise<Category[]> {
     return this.categoryModel.find();
   }
 
-  async findById(id: string) {
+  async findById(id: string): Promise<Category> {
     return this.categoryModel.findById(id);
   }
 
-  async createCategory(category: CreateCategoryInput) {
+  async createCategory(category: CreateCategoryInput): Promise<Category> {
     return this.categoryModel.create(category);
   }
 }

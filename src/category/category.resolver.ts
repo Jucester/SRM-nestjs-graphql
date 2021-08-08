@@ -26,9 +26,4 @@ export class CategoryResolver {
   async createCategory(@Args('input') input: CreateCategoryInput) {
     return this.categoryService.createCategory(input);
   }
-
-  // @ResolveField()
-  // async companies(@Parent() parent: Category) {
-  //   return this.companyService.findByCategory(parent._id);
-  // }
 }

@@ -33,6 +33,11 @@ export class CompanyResolver {
     return this.companyService.createCompany(company);
   }
 
+  @Mutation(() => Company)
+  async deleteCompany(@Args('input') { _id }: FindCompany) {
+    return this.companyService.deleteCompany(_id);
+  }
+
   @ResolveField(() => Category)
   async category(@Parent() company: Company) {
     return this.categoryService.findById(company.category as string);

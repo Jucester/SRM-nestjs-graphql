@@ -16,10 +16,6 @@ export class Category {
   @Prop()
   @Field()
   name: string;
-
-  @Prop({ type: ObjectId, ref: 'Company'})
-  @Field(() => [Company])
-  companies: Company[];
 }
 
 @InputType()

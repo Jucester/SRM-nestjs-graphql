@@ -14,7 +14,6 @@ type Company {
 type Category {
   _id: ID!
   name: String!
-  companies: [Company!]!
 }
 
 type Query {
@@ -29,6 +28,7 @@ input FindCompany {
 
 type Mutation {
   createCompany(input: CreateCompanyInput!): Company!
+  deleteCompany(input: FindCompany!): Company!
   createCategory(input: CreateCategoryInput!): Category!
 }
 
