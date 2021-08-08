@@ -1,13 +1,26 @@
+# SIMPLE CRUD API
 
+Simple API using Nestjs with GraphQL and MongoDB.
 
-## Description
+## Stack
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+* Node.js 16.0.0
+* Nestjs 8.0.0
+* GraphQL: 15.5.1
+* Mongoose 5.13.5
+
 
 ## Installation
 
 ```bash
 $ npm install
+```
+
+## Configuration
+
+```
+After Install please modify in the .env file the Mongo url and the port you want to use.
+
 ```
 
 ## Running the app
@@ -23,5 +36,4 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-```
 

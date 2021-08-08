@@ -9,7 +9,8 @@ import { CategoryService } from './category/category.service';
 import { CategoryModule } from './category/category.module';
 import { CompanySchema } from './company/schema/company.schema';
 import { CategorySchema } from './category/schema/category.schema';
-import { BaseService } from './base/base.service';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { BaseService } from './base/base.service';
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
     }),
-    MongooseModule.forRoot('mongodb://localhost/companies-graphql', {
+    MongooseModule.forRoot(process.env.MONGO_URL, {
       useNewUrlParser: true,
       useFindAndModify: false,
       useCreateIndex: true,
