@@ -19,7 +19,7 @@ $ npm install
 ## Configuration
 
 ```
-After Install please modify in the .env file the Mongo url and the port you want to use.
+After Install please modify in the .env file the Mongo url you want to use.
 
 ```
 
