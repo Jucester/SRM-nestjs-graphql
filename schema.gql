@@ -16,6 +16,11 @@ type Category {
   name: String!
 }
 
+type User {
+  _id: ID!
+  username: String!
+}
+
 type Query {
   companies: [Company!]!
   company(input: FindCompany!): Company!
@@ -31,6 +36,7 @@ type Mutation {
   createCompany(input: CreateCompanyInput!): Company!
   deleteCompany(input: FindCompany!): Company!
   createCategory(input: CreateCategoryInput!): Category!
+  register(input: CreateUserInput!): User!
 }
 
 input CreateCompanyInput {
@@ -43,4 +49,10 @@ input CreateCompanyInput {
 
 input CreateCategoryInput {
   name: String!
+}
+
+input CreateUserInput {
+  username: String!
+  email: String!
+  password: String!
 }
