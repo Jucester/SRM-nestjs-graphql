@@ -37,6 +37,7 @@ type Mutation {
   deleteCompany(input: FindCompany!): Company!
   createCategory(input: CreateCategoryInput!): Category!
   register(input: CreateUserInput!): User!
+  confirmUser(input: ConfirmUserInput!): User!
 }
 
 input CreateCompanyInput {
@@ -55,4 +56,9 @@ input CreateUserInput {
   username: String!
   email: String!
   password: String!
+}
+
+input ConfirmUserInput {
+  email: String!
+  confirmToken: String!
 }
