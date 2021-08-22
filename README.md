@@ -1,6 +1,6 @@
-# SIMPLE CRUD API
+# BASIC SUPPLIER RELATIONSHIP MANAGEMENT BACKEND
 
-Simple API using Nestjs with GraphQL and MongoDB.
+API for a SRM System using Nestjs with GraphQL and MongoDB.
 
 ## Stack
 
