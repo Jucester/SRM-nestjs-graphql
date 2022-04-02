@@ -8,12 +8,7 @@ type Company {
   description: String!
   email: String!
   phone: String!
-  category: Category!
-}
-
-type Category {
-  _id: ID!
-  name: String!
+  category: String!
 }
 
 type User {
@@ -24,8 +19,6 @@ type User {
 type Query {
   companies: [Company!]!
   company(input: FindCompany!): Company!
-  byCategory(input: String!): [Company!]!
-  categories: [Category!]!
 }
 
 input FindCompany {
@@ -35,7 +28,6 @@ input FindCompany {
 type Mutation {
   createCompany(input: CreateCompanyInput!): Company!
   deleteCompany(input: FindCompany!): Company!
-  createCategory(input: CreateCategoryInput!): Category!
   register(input: CreateUserInput!): User!
   confirmUser(input: ConfirmUserInput!): User!
 }
@@ -46,10 +38,6 @@ input CreateCompanyInput {
   email: String!
   phone: String!
   category: String!
-}
-
-input CreateCategoryInput {
-  name: String!
 }
 
 input CreateUserInput {

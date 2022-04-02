@@ -1,25 +1,18 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { CompanyService } from './company/company.service';
-import { CompanyModule } from './company/company.module';
+import { CompaniesModule } from './companies/companies.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CategoryService } from './category/category.service';
-import { CategoryModule } from './category/category.module';
-import { CompanySchema } from './company/schema/company.schema';
-import { CategorySchema } from './category/schema/category.schema';
-import { UserModule } from './user/user.module';
+import { CompanySchema } from './companies/schema/company.schema';
+import { UsersModule } from './users/users.module';
+import { UserSchema } from './users/schema/user.schema';
+import { ScalarsModule } from './scalars/scalars.module';
 import * as dotenv from 'dotenv';
-import { UserService } from './user/user.service';
-import { UserSchema } from './user/schema/user.schema';
 dotenv.config();
 
 @Module({
   imports: [
-    CompanyModule,
-    CategoryModule,
-    UserModule,
+    CompaniesModule,
+    UsersModule,
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
     }),
@@ -32,11 +25,11 @@ dotenv.config();
 
     MongooseModule.forFeature([
       { name: 'Company', schema: CompanySchema },
-      { name: 'Category', schema: CategorySchema },
       { name: 'User', schema: UserSchema}
     ]),
+
+    ScalarsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService, CompanyService, CategoryService, UserService],
+  // providers: [AppService, CompaniesService, UsersService],
 })
 export class AppModule {}

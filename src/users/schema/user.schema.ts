@@ -28,14 +28,14 @@ export class User {
   matchPassword: (password: string) => boolean;
 }
 
-export type UserDocument = User & mongoose.Document;
+export type IUser = User & mongoose.Document;
 
 export const UserSchema = SchemaFactory.createForClass(User);
 
 UserSchema.index({ email: 1 });
 
 UserSchema.pre('save', async function (next: mongoose.HookNextFunction) {
-  const user = this as UserDocument;
+  const user = this as IUser;
 
   if (!user.isModified('password')) {
     return next();
@@ -50,7 +50,7 @@ UserSchema.pre('save', async function (next: mongoose.HookNextFunction) {
 });
 
 UserSchema.methods.matchPassword = async function (password: string) {
-  const user = this as UserDocument;
+  const user = this as IUser;
 
   return await bcrypt.compare(password, user.password);
 };

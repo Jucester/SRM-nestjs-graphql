@@ -1,11 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { Field, ObjectType, ID, InputType } from '@nestjs/graphql';
-import { Category } from '../../category/schema/category.schema';
 
 const { ObjectId } = Types;
 
-export type CompanyDocument = Company & Document;
+export type ICompany = Company & Document;
 
 @Schema()
 @ObjectType()
@@ -29,9 +28,9 @@ export class Company {
   @Field()
   phone: string;
 
-  @Prop({ type: ObjectId, ref: 'Category' })
-  @Field(() => Category)
-  category: Category | string;
+  @Prop()
+  @Field()
+  category: string;
 }
 
 @InputType()

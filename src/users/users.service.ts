@@ -3,17 +3,13 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { nanoid } from 'nanoid';
 import { BaseService } from 'src/base/base.service';
-import {
-  ConfirmUserInput,
-  CreateUserInput,
-  UserDocument,
-} from './schema/user.schema';
+import { ConfirmUserInput, CreateUserInput, IUser } from './schema/user.schema';
 
 @Injectable()
-export class UserService extends BaseService<UserDocument> {
+export class UsersService extends BaseService<IUser> {
   constructor(
     @InjectModel('User')
-    private readonly userModel: Model<UserDocument>,
+    private readonly userModel: Model<IUser>,
   ) {
     super(userModel);
   }
