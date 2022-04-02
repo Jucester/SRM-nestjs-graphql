@@ -16,9 +16,16 @@ type User {
   username: String!
 }
 
+type Scalar {
+  _id: ID!
+  scalarType: String!
+  value: String!
+}
+
 type Query {
   companies: [Company!]!
   company(input: FindCompany!): Company!
+  scalars: [Scalar!]!
 }
 
 input FindCompany {
