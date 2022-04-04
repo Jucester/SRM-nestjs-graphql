@@ -4,7 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { Document, FilterQuery, Model } from 'mongoose';
-import { IBaseService } from './IBase.service';
+import { IBaseService } from '../../app/interfaces/IBase.service';
 
 @Injectable()
 export abstract class BaseService<T extends Document>

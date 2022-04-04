@@ -2,7 +2,7 @@ import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { ICompany } from './schema/company.schema';
-import { BaseService } from 'src/base/base.service';
+import { BaseService } from '../commons/domain/services/base.service';
 
 @Injectable()
 export class CompaniesService extends BaseService<ICompany> {
