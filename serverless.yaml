@@ -1,0 +1,32 @@
+service: fast-supply-backend
+
+useDotenv: true
+
+plugins: 
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  environment:
+    MONGO_URL: ${env:MONGO_URL}
+
+package:
+  exclude:
+    - .git/**
+    - src/**
+    - test/**
+    - README.md
+  excludeDevDependencies: true
+
+functions:
+  graphql:
+    handler: dist/serverless.handler
+    events:
+      - http:
+          cors: true
+          path: '/{proxy+}'
+          method: any
+
+
+

@@ -15,6 +15,9 @@ dotenv.config();
     UsersModule,
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
+      playground: {
+        endpoint: 'dev/graphql',
+      },
     }),
     MongooseModule.forRoot(process.env.MONGO_URL, {
       useNewUrlParser: true,
@@ -22,10 +25,9 @@ dotenv.config();
       useCreateIndex: true,
       useUnifiedTopology: true,
     }),
-
     MongooseModule.forFeature([
       { name: 'Company', schema: CompanySchema },
-      { name: 'User', schema: UserSchema}
+      { name: 'User', schema: UserSchema },
     ]),
 
     ScalarsModule,
